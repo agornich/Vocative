@@ -1,0 +1,275 @@
+void NadajWolacz (int ClientID );
+
+temp = "" ; 
+wolacz = "" ; 
+response = zoho.crm.getRecordById("Contacts" ,input.ClientID ) ; 
+imie = response.get("First Name") ; 
+Info "imie poczπtkowe:" + imie;
+if ( (((imie != null) && (imie != "")) && (imie.length() >= 2)) )  
+{
+    imlength = imie.length() ; 
+    last2chars = imie.subString((imlength - 2)) ; 
+		last3chars = imie.subString((imlength - 3));
+		last4chars = imie.subString((imlength - 4));
+    ostatniznak = imie.subString((imie.length() - 1)) ; 
+    imieBez2ostZnakow = imie.subString(0,(imlength - 2)) ; 
+    imieBez1ostZnakow = imie.subString(0,(imlength - 1)) ; 
+    ost3znaki = imie.subString((imie.length() - 3)) ; 
+    Info (" imlength ") + (imlength);
+    Info " last2chars " + last2chars;
+    Info " ostatniznak " + ostatniznak;
+    Info " imieBez2ostZnakow " + imieBez2ostZnakow;
+    Info " ost3znaki " + ost3znaki;
+    if ( ((imie.length() - 4) >= 0) )  
+    {
+       ost4znaki = imie.subString((imie.length() - 4)) ; 
+       imieBez4ostZnakow = imie.subString(0,(imie.length() - 4)) ; 
+    }
+    else
+    {
+       ost4znaki = imie ; 
+       imieBez4ostZnakow = "" ; 
+    }
+    Info " ost4znaki " + ost4znaki;
+    //jeúli imie d≥uøsze niø 4 znaki to pokaz te 4 znaki 
+    Info "imieBez4ostZnakow " + imieBez4ostZnakow;
+    //jeúli imie d≥uøsze niø 4 znaki to pokaz imie bez tych 4 znakow 
+    
+		
+		// WYJ•TKI POJEDYNCZYCH IMION 
+		
+    if((imie = "Miriam"))
+    {
+       wolacz = "Miriam" ; 
+    }
+    else if((imie = "Nel"))
+    {
+       wolacz = "Nel" ; 
+    }
+		else if((imie = "Nell"))
+    {
+       wolacz = "Nell" ; 
+    }
+    else if((imie = "Ewa"))
+    {
+       wolacz = "Ewo" ; 
+    }
+    else if((imie = "Jerzy"))
+    {
+       wolacz = "Jerzy" ; 
+    }
+    else if((imie = "Siemomys≥"))
+    {
+       wolacz = "Siemomyúle" ; 
+    }
+		 else if((imie = "Wszesiod≥"))
+    {
+       wolacz = "Wszesiod≥awie" ; 
+    }
+		else if((imie = "Domaczaja"))
+    {
+       wolacz = "Domaczajo" ; 
+    }
+		
+		//KO—C”WKI TRZYZNAKOWE I CZTEROZNAKOWE
+		
+    if((ost3znaki == "mi≥"))
+    {
+       wolacz = (imie.subString(0,(imie.length() - 1))) + "le" ; 
+    }
+    else if((ost3znaki == "ys≥"))
+    {
+       wolacz = imieBez2ostZnakow + "úle" ; 
+    }
+    else if((ost3znaki == "io≥"))
+    {
+       wolacz = (imieBez2ostZnakow.subString(0,(imieBez2ostZnakow.length() - 1))) + "iele" ; 
+    }
+    else if((ost4znaki == "ciek"))
+    {
+       wolacz = imieBez4ostZnakow + "Êku" ; 
+    }
+    else if((ost4znaki = "niec"))
+    {
+       wolacz = imieBez4ostZnakow + "Òcu" ; 
+    }
+    else if((ost4znaki = "siek"))
+    {
+       wolacz = imieBez4ostZnakow + "úku" ; 
+    }
+    else if((ost3znaki = "per"))
+    {
+       wolacz = imieBez2ostZnakow + "erze" ; 
+    }
+		
+		//ØE—SKIE Z KO—C”WK• TRZYLITEROW•
+		else if(((((((((((((((((((((((((((((last3chars == "cja") || (last3chars == "ria")) || (last3chars == "lia")) || (last3chars == "dia")) || (last3chars == "wia")) || (last3chars == "fia")) || (last3chars == "lla")) || (last3chars == "ila")) || (last3chars == "gia")) || (last3chars == "tia")) || (last3chars == "eja")) || (last3chars == "ela")) || (last3chars == "ija")) || (last3chars == "rla")) || (last3chars == "aia")) || (last3chars == "yla")) || (last3chars == "jla")) || (last3chars == "zja")) || (last3chars == "nia")) || (last3chars == "bia")) || (last3chars == "mia")) || (last3chars == "pia")) || (last3chars == "ula")) || (last3chars == "hia")) || (last4chars == "iela")) || (last4chars == "bela")) || (last4chars == "zula")) || (last4chars == "ssia")))
+    {
+       wolacz = (imie.subString(0,(imie.length() - 1))) + "o" ; 
+    }
+		
+		else if((last3chars == "ola"))
+    {
+       wolacz = (imie.subString(0,(imie.length() - 1))) + "u" ; 
+    }
+		
+
+		// KO—C”WKI DWUZNAKOWE
+		
+		else if ( (last2chars == "ni") )  
+    {
+       wolacz = imie ; 
+    }
+			else if ( (last2chars == "ez") )  
+    {
+       wolacz = imie ; 
+    }
+		else if ( (last2chars == "ba") )  
+    {
+       wolacz = imieBez1ostZnakow + "o"; 
+    }
+		else if ( (last2chars == "ix") )  
+    {
+       wolacz = imieBez1ostZnakow + "ksie"; 
+    }
+			else if ( (last2chars == "iz") )  
+    {
+       wolacz = imie + "ie"; 
+    }
+    else if((last2chars == "e≥"))
+    {
+       wolacz = imieBez2ostZnakow + "le" ; 
+    }
+    else if((last2chars == "tr"))
+    {
+       wolacz = imie + "ze" ; 
+    }
+    else if((((last2chars == "a≥") || (last2chars == "d≥")) || (last2chars == "u≥")))
+    {
+       wolacz = (imie.subString(0,(imie.length() - 1))) + "le" ; 
+    }
+    else if(((((((((last2chars == "at") || (last2chars == "ut")) || (last2chars == "it")) || (last2chars == "rt")) || (last2chars == "yt")) || (last2chars == "et")) || (last2chars == "Ít")) || (last2chars == "ot")))
+    {
+       wolacz = (imie.subString(0,(imie.length() - 1))) + "cie" ; 
+    }
+		
+		else if((((((((ostatniznak == "n") || (ostatniznak == "f")) || (ostatniznak == "m")) || (ostatniznak == "w")) || (ostatniznak == "p")) || (ostatniznak == "s")) || (ostatniznak == "b")))
+    {
+       wolacz = imie + "ie" ; 
+    }
+		else if((((((((ostatniznak == "g") || (ostatniznak == "h")) || (ostatniznak == "j")) || (ostatniznak == "k")) || (ostatniznak == "l")) || (ostatniznak == "z")) || (ostatniznak == "b")))
+    {
+       wolacz = imie + "u" ; 
+    }
+		
+		 else if(((last3chars = "der")) || ((last3chars = "ter")))
+    {
+       wolacz = imie + "ze" ; 
+    }
+		 else if((last2chars = "of"))
+    {
+       wolacz = imie + "ie" ; 
+    }
+    else if((last2chars = "ej"))
+    {
+       wolacz = imie + "u" ; 
+    }
+    else if((last2chars = "ek"))
+    {
+       wolacz = imieBez2ostZnakow + "ku" ; 
+    }
+    else if((last2chars = "sz"))
+    {
+       wolacz = imie + "u" ; 
+    }
+    else if((last2chars = "st"))
+    {
+       wolacz = imieBez2ostZnakow + "úcie" ; 
+    }
+		  else if((last2chars = "nt"))
+    {
+       wolacz = imieBez2ostZnakow + "ncie" ; 
+    }
+    else if((last2chars = "kt"))
+    {
+       wolacz = imieBez2ostZnakow + "kcie" ; 
+    }
+		 else if((last2chars = "ja"))
+    {
+       wolacz = imieBez2ostZnakow + "ju" ; 
+    }
+    else if((last2chars = "na"))
+    {
+       wolacz = imieBez1ostZnakow + "o" ; 
+    }
+				
+   
+		//KO—C”WKI JEDNOZNAKOWE
+    else if((ostatniznak = "a"))
+    {
+       wolacz = imieBez1ostZnakow + "o" ; 
+    }
+		else if((ostatniznak = "d"))
+    {
+       wolacz = imie + "zie" ; 
+    }
+		else if((ostatniznak = "l"))
+    {
+       wolacz = imie + "u" ; 
+    }
+     else if((ostatniznak = "m"))
+    {
+       wolacz = imie + "ie" ; 
+    }
+		else if((ostatniznak = "n"))
+    {
+       wolacz = imie + "ie" ; 
+    }
+		else if((ostatniznak = "r"))
+    {
+       wolacz = imie + "ze" ; 
+    }
+		else if((ostatniznak = "y"))
+    {
+       wolacz = imie; 
+    }
+    else if((ostatniznak = "s"))
+    {
+       wolacz = imie ; 
+    }
+    else if((ostatniznak = "w"))
+    {
+       wolacz = imie + "ie" ; 
+    }
+
+
+    
+		Info " wo≥acz przed temp " + wolacz;
+		
+		//Wo≥acz SMS
+		
+    temp = wolacz ; 
+    Info temp;
+    temp = temp.replaceAll("π","a") ; 
+    temp = temp.replaceAll("Ê","c") ; 
+    temp = temp.replaceAll("Í","e") ; 
+    temp = temp.replaceAll("≥","l") ; 
+    temp = temp.replaceAll("Ò","n") ; 
+    temp = temp.replaceAll("Û","o") ; 
+    temp = temp.replaceAll("ú","s") ; 
+    temp = temp.replaceAll("ø","z") ; 
+    temp = temp.replaceAll("ü","z") ; 
+    temp = temp.replaceAll("•","A") ; 
+    temp = temp.replaceAll("∆","C") ; 
+    temp = temp.replaceAll(" ","E") ; 
+    temp = temp.replaceAll("£","L") ; 
+    temp = temp.replaceAll("—","N") ; 
+    temp = temp.replaceAll("”","O") ; 
+    temp = temp.replaceAll("å","S") ; 
+    temp = temp.replaceAll("Ø","Z") ; 
+    temp = temp.replaceAll("è","Z") ; 
+    
+		Info temp;
+    response = zoho.crm.updateRecord("Contacts" ,input.ClientID.toString() ,{ "Wo≥acz" : wolacz, "Wo≥acz SMS" : temp } ) ; 
+    Info response;
+}
